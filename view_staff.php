@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>feedback</title>
+<title>staff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Minimal Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -69,29 +69,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!---->
   <div class="grid-form1">
-  	       <h3>Feedback</h3>
+  	       <h3>View Staff</h3>
   	         <div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 							
 							<table class="table table-bordered table-striped table-hover">
 								<tr>
 									<th>Sl No.</th>
-									<th>Name</th>
-									<th>Feedback</th>
-									<th>Date</th>
+									<th>Staff name</th>
+									<th>Address</th>
+									<th>Contact</th>
+									<th>Work Type</th>
+									<th>E Mail</th>
+									<th>Salary</th>
+									<th>Action</th>
 								</tr>
 								<?php include('con_db.php');
 								$i=1;
-									$qry=mysql_query("select * from feedback,user where feedback.User_ID=user.User_ID") or die(mysql_error());
+									$qry=mysql_query("select * from staff,staff_salary where staff.Staff_ID=staff_salary.Staff_ID") or die(mysql_error());
 									while($row=mysql_fetch_array($qry))
 									{
 								 ?>
 								 <tr>
 								 	<td><?php echo $i++;?></td>
-								 	
-								 	<td><?php echo $row['Full_Name']; ?></td>
-								 	<td><?php echo $row['feedback']; ?></td>
-								 	<td><?php echo $row['date']; ?></td>
+								 	<td><?php echo $row['Staff_Name']; ?></td>
+								 	<td><?php echo $row['Address']; ?></td>
+								 	<td><?php echo $row['Contact_no']; ?></td>
+								 	<td><?php echo $row['Worker_Type']; ?></td>
+								 	<td><?php echo $row['E_Mail']; ?></td>
+								 	<td><?php echo $row['Salary']; ?></td>
+								 	<td><a href="upstaff.php?st_id=<?php echo $row['Staff_ID']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a> <a href="deletestaff.php?st_id=<?php echo $row['Staff_ID']; ?>" onclick="return DeleteSure();" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
 								 </tr>
 								 <?php } ?>
 							</table>
@@ -101,7 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  	<!--//grid-->
 		<!---->
 <div class="copy">
-            <p> &copy; 2018 Autoscope. All Rights Reserved | Design by: aravind</p>	    </div>
+            <p> &copy; 2018 Autoscope. All Rights Reserved | Design by: aravind<p>	    </div>
 		</div>
 		</div>
 		<div class="clearfix"> </div>
@@ -111,7 +118,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/scripts.js"></script>
 	<!--//scrolling js-->
 <!---->
+<script type="text/javascript">
+	function DeleteSure()
+		{
+			return confirm("Are you sure to delete this?");
+		}
+</script>
 
 </body>
 </html>
-

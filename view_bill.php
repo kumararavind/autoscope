@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>feedback</title>
+<title>view bill</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Minimal Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -59,41 +59,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		    </div>
 		<!--//banner-->
  	<!--grid-->
- 	<div class="grid-form">
  		
-
-
 <!---->
-
-
 
 <!---->
   <div class="grid-form1">
-  	       <h3>Feedback</h3>
+  	       <h3>View Bill</h3>
   	         <div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 							
-							<table class="table table-bordered table-striped table-hover">
+							<table class="table table-bordered table-hover" style="background-color: white;">
 								<tr>
 									<th>Sl No.</th>
-									<th>Name</th>
-									<th>Feedback</th>
-									<th>Date</th>
+									<th>Item</th>
+									<th>Quantity</th>
+									<th>Price</th>
+									<th>Tax</th>
+									<th>Total</th>
+
 								</tr>
-								<?php include('con_db.php');
-								$i=1;
-									$qry=mysql_query("select * from feedback,user where feedback.User_ID=user.User_ID") or die(mysql_error());
-									while($row=mysql_fetch_array($qry))
-									{
-								 ?>
-								 <tr>
-								 	<td><?php echo $i++;?></td>
-								 	
-								 	<td><?php echo $row['Full_Name']; ?></td>
-								 	<td><?php echo $row['feedback']; ?></td>
-								 	<td><?php echo $row['date']; ?></td>
-								 </tr>
-								 <?php } ?>
+								
 							</table>
     
   </div>
@@ -114,4 +99,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </body>
 </html>
-
