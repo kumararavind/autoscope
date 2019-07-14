@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>feedback</title>
+<title>view customers</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Minimal Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -48,50 +48,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
        <?php include('sidebar.php'); ?>
 		 <div id="page-wrapper" class="gray-bg dashbard-1">
        <div class="content-main">
- 
- 	<!--banner-->	
-		     <div class="banner">
-		    	<h2>
-				<a href="index.html">Home</a>
-				<i class="fa fa-angle-right"></i>
-				<span>Forms</span>
-				</h2>
-		    </div>
-		<!--//banner-->
- 	<!--grid-->
- 	<div class="grid-form">
- 		
 
-
-<!---->
-
-
-
-<!---->
   <div class="grid-form1">
-  	       <h3>Feedback</h3>
+  	       <h3>View Customers</h3>
   	         <div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 							
 							<table class="table table-bordered table-striped table-hover">
 								<tr>
 									<th>Sl No.</th>
-									<th>Name</th>
-									<th>Feedback</th>
-									<th>Date</th>
+									<th>Customer name</th>
+									<th>Image</th>
+									<th>Address</th>
+									<th>Contact</th>
+									<th>E_Mail</th>
+									<th>Reg Date</th>
 								</tr>
 								<?php include('con_db.php');
 								$i=1;
-									$qry=mysql_query("select * from feedback,user where feedback.User_ID=user.User_ID") or die(mysql_error());
+									$qry=mysql_query("select * from user order by Reg_date desc") or die(mysql_error());
 									while($row=mysql_fetch_array($qry))
 									{
 								 ?>
 								 <tr>
 								 	<td><?php echo $i++;?></td>
-								 	
 								 	<td><?php echo $row['Full_Name']; ?></td>
-								 	<td><?php echo $row['feedback']; ?></td>
-								 	<td><?php echo $row['date']; ?></td>
+								 	<td><img src="../photos/<?php echo $row['Image']; ?>" height="60px" width="60px"></td>
+								 	<td><?php echo $row['Address']; ?></td>
+								 	<td><?php echo $row['Contact_no']; ?></td>
+								 	<td><?php echo $row['E_Mail']; ?></td>
+								 	<td><?php echo $row['Reg_date']; ?></td>
 								 </tr>
 								 <?php } ?>
 							</table>
@@ -114,4 +100,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </body>
 </html>
-

@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>feedback</title>
+<title>schedule</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Minimal Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -69,29 +69,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!---->
   <div class="grid-form1">
-  	       <h3>Feedback</h3>
+  	       <h3>View Schedule</h3>
   	         <div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 							
 							<table class="table table-bordered table-striped table-hover">
 								<tr>
 									<th>Sl No.</th>
-									<th>Name</th>
-									<th>Feedback</th>
-									<th>Date</th>
+									<th>Days</th>
+									<th>From Time</th>
+									<th>To Time</th>
+									<th>Action</th>
 								</tr>
 								<?php include('con_db.php');
 								$i=1;
-									$qry=mysql_query("select * from feedback,user where feedback.User_ID=user.User_ID") or die(mysql_error());
+									$qry=mysql_query("select * from schedule") or die(mysql_error());
 									while($row=mysql_fetch_array($qry))
 									{
 								 ?>
 								 <tr>
 								 	<td><?php echo $i++;?></td>
-								 	
-								 	<td><?php echo $row['Full_Name']; ?></td>
-								 	<td><?php echo $row['feedback']; ?></td>
-								 	<td><?php echo $row['date']; ?></td>
+								 	<td><?php $dayss=explode(",", $row['days']); 
+								 		foreach ($dayss as $key => $value) {
+								 			echo $value.' ';
+								 		}
+								 	?></td>
+								 	<td><?php echo $row['from_timings']; ?></td>
+								 	<td><?php echo $row['to_timings']; ?></td>
+								 	<td> <a href="delschedule.php?scid=<?php echo $row['sch_id']; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
 								 </tr>
 								 <?php } ?>
 							</table>

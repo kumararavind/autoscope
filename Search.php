@@ -1,8 +1,7 @@
-
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>feedback</title>
+<title>search</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Minimal Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -59,49 +58,62 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		    </div>
 		<!--//banner-->
  	<!--grid-->
- 	<div class="grid-form">
  		
-
-
 <!---->
-
-
 
 <!---->
   <div class="grid-form1">
-  	       <h3>Feedback</h3>
+  	       <h3>Searched</h3>
   	         <div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
-							
+						<?php include 'con_db.php';
+							if(isset($_POST['search']))
+							{
+								
+							?>
 							<table class="table table-bordered table-striped table-hover">
 								<tr>
 									<th>Sl No.</th>
-									<th>Name</th>
-									<th>Feedback</th>
-									<th>Date</th>
+									<th>Customer name</th>
+									<th>Vehicle no</th>
+									<th>Brand</th>
+									<th>V Type</th>
+									<th>Model</th>
+									<th>Model no</th>
 								</tr>
 								<?php include('con_db.php');
 								$i=1;
-									$qry=mysql_query("select * from feedback,user where feedback.User_ID=user.User_ID") or die(mysql_error());
+								if(preg_match("/[A-Z  | a-z | 0-9 | - ]+/", $_POST['sname']))
+								{ 
+								$sname=$_POST['sname']; 
+									$qry=mysql_query("SELECT * from vehicle where vehicle.`Brand` LIKE '%".mysql_real_escape_string($sname)."%' or vehicle.`V_Type` LIKE '%".mysql_real_escape_string($sname)."%' group by V_ID") or die(mysql_error());
 									while($row=mysql_fetch_array($qry))
 									{
 								 ?>
 								 <tr>
 								 	<td><?php echo $i++;?></td>
+								 	<?php $uid= $row['User_ID']; 
+								 		$sr=mysql_query("SELECT * FROM user where User_ID='$uid'");
+								 		$res=mysql_fetch_array($sr);
+								 	 ?>
+								 	<td><?php echo $res['Full_Name']; ?></td>
+								 	<td><?php echo $row['V_No']; ?></td>
+								 	<td><?php echo $row['Brand']; ?></td>
+								 	<td><?php echo $row['V_Type']; ?></td>
+								 	<td><?php echo $row['Model']; ?></td>
+								 	<td><?php echo $row['model_no']; ?></td>
 								 	
-								 	<td><?php echo $row['Full_Name']; ?></td>
-								 	<td><?php echo $row['feedback']; ?></td>
-								 	<td><?php echo $row['date']; ?></td>
 								 </tr>
 								 <?php } ?>
 							</table>
+							<?php } } ?>
     
   </div>
  	</div>
  	<!--//grid-->
 		<!---->
 <div class="copy">
-            <p> &copy; 2018 Autoscope. All Rights Reserved | Design by: aravind</p>	    </div>
+            <p> &copy; 2018 Autoscope. All Rights Reserved | Design by:aravind</p>	    </div>
 		</div>
 		</div>
 		<div class="clearfix"> </div>
@@ -114,4 +126,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </body>
 </html>
-

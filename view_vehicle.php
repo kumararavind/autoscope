@@ -1,12 +1,9 @@
-
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>feedback</title>
+<title>vehicles</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Minimal Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
@@ -30,19 +27,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				return false;
 			}
 
-			
-
 			$('#toggle').click(function () {
 				screenfull.toggle($('#container')[0]);
 			});
 			
-
-			
 		});
 		</script>
-
-
-</head>
+	</head>
 <body>
 <div id="wrapper">
        <?php include('sidebar.php'); ?>
@@ -58,40 +49,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</h2>
 		    </div>
 		<!--//banner-->
- 	<!--grid-->
- 	<div class="grid-form">
- 		
 
-
-<!---->
-
-
-
-<!---->
   <div class="grid-form1">
-  	       <h3>Feedback</h3>
+  	       <h3>View Vehicles</h3>
   	         <div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 							
 							<table class="table table-bordered table-striped table-hover">
 								<tr>
 									<th>Sl No.</th>
-									<th>Name</th>
-									<th>Feedback</th>
-									<th>Date</th>
+									<th>Vehicle no</th>
+									<th>Vehicle type</th>
+									<th>Brand</th>
+									<th>Model</th>
+									<th>Model no</th>
 								</tr>
 								<?php include('con_db.php');
 								$i=1;
-									$qry=mysql_query("select * from feedback,user where feedback.User_ID=user.User_ID") or die(mysql_error());
+									$qry=mysql_query("select * from vehicle order by V_ID desc") or die(mysql_error());
 									while($row=mysql_fetch_array($qry))
 									{
 								 ?>
 								 <tr>
 								 	<td><?php echo $i++;?></td>
-								 	
-								 	<td><?php echo $row['Full_Name']; ?></td>
-								 	<td><?php echo $row['feedback']; ?></td>
-								 	<td><?php echo $row['date']; ?></td>
+								 	<td><?php echo $row['V_No']; ?></td>
+								 	<td><?php echo $row['Brand']; ?></td>
+								 	<td><?php echo $row['V_Type']; ?></td>
+								 	<td><?php echo $row['Model']; ?></td>
+								 	<td><?php echo $row['model_no']; ?></td>
 								 </tr>
 								 <?php } ?>
 							</table>
@@ -114,4 +99,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </body>
 </html>
-
